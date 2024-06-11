@@ -1,3 +1,18 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals","@rocketseat/eslint-config/react"],
+  "plugins": ["simple-import-sort", "unused-imports"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "no-var": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "jsx-a11y/alt-text": "off",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/no-absolute-path": "off",
+    "unused-imports/no-unused-imports": "error"
+  }
 }
