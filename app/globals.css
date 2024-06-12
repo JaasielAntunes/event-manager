@@ -66,21 +66,17 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    scroll-behavior: smooth;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-poppins);
-  }
+* {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-poppins)
 }
 
 .filter-grey {
@@ -88,6 +84,7 @@
     hue-rotate(32deg) brightness(98%) contrast(92%);
 }
 
+/* ========================================== TAILWIND STYLES */
 @layer utilities {
   .wrapper {
     @apply max-w-7xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
