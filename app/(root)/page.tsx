@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">
-              Hospede, conecte e comemore seus eventos em nossa plataforma!
+              Crie, conecte e comemore seus eventos em nossa plataforma!
             </h1>
             <p className="p-regular-20 md:p-regular-24">
               Reserve e aprenda dicas úteis de mais de 3 mil mentores em
