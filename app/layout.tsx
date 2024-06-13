@@ -3,6 +3,7 @@ import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import { Toaster } from 'sonner'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -27,7 +28,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="pt-BR">
-        <body className={poppins.variable}>{children}</body>
+        <body className={poppins.variable}>
+          {children}
+          <Toaster richColors />
+        </body>
       </html>
     </ClerkProvider>
   )

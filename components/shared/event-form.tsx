@@ -399,7 +399,11 @@ export default function EventForm({
           disabled={form.formState.isSubmitting}
           className="button"
         >
-          {form.formState.isSubmitting ? 'Cadastrando...' : `${type} Evento `}
+          {form.formState.isSubmitting
+            ? type === 'Atualizar'
+              ? 'Atualizando evento...'
+              : 'Cadastrando...'
+            : `${type} Evento`}
         </Button>
       </form>
     </Form>

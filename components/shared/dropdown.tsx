@@ -1,4 +1,5 @@
 import { startTransition, useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 import {
   AlertDialog,
@@ -83,13 +84,21 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
                   placeholder="Nome da categoria"
                   className="input-field mt-3"
                   onChange={(e) => setNewCategory(e.target.value)}
+                  maxLength={20}
+                  required
                 />
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancelar</AlertDialogCancel>
               <AlertDialogAction
-                onClick={() => startTransition(handleAddCategory)}
+                onClick={() => {
+                  if (newCategory.trim()) {
+                    startTransition(handleAddCategory)
+                  } else {
+                    toast.error('O Campo nova categoria é obrigatório!')
+                  }
+                }}
               >
                 Adicionar
               </AlertDialogAction>
