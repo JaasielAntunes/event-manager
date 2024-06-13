@@ -311,7 +311,7 @@ export default function EventForm({
             name="price"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Valor *</FormLabel>
+                <FormLabel>Valor</FormLabel>
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
@@ -369,7 +369,7 @@ export default function EventForm({
             name="url"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel>Link do evento</FormLabel>
+                <FormLabel>Link do evento *</FormLabel>
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image
