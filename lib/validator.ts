@@ -2,7 +2,10 @@
 import * as z from "zod";
 
 export const eventFormSchema = z.object({
-  title: z.string().min(3, "O título deve ter pelo menos 3 caracteres!"),
+  title: z
+    .string()
+    .min(3, "O título deve ter pelo menos 3 caracteres!")
+    .max(50, "O título deve ter menos de 100 caracteres!"),
   description: z
     .string()
     .min(3, "A descrição deve ter pelo menos 3 caracteres!")
