@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import DatePicker, { registerLocale } from 'react-datepicker'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import * as z from 'zod'
 
 import { eventDefaultValues } from '@/constants'
@@ -31,7 +32,6 @@ import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 import Dropdown from './dropdown'
 import FileUploader from './file-uploader'
-
 type EventFormProps = {
   userId: string
   type: 'Cadastrar' | 'Atualizar'
@@ -67,9 +67,18 @@ export default function EventForm({
     let uploadedImageUrl = values.imageUrl
 
     if (files.length > 0) {
+      const fileSizeInMB = files[0].size / 1024 / 1024
+      if (fileSizeInMB > 4) {
+        toast.error(
+          'Tamanho da imagem excede 4MB! Toque no campo para selecionar outra imagem.',
+        )
+        return
+      }
+
       const uploadedImages = await startUpload(files)
 
       if (!uploadedImages) {
+        toast.error('Erro ao fazer upload da imagem!')
         return
       }
 
@@ -85,10 +94,12 @@ export default function EventForm({
         })
 
         if (newEvent) {
+          toast.success('Evento cadastrado com sucesso!')
           form.reset()
           router.push(`/events/${newEvent._id}`)
         }
       } catch (error) {
+        toast.error('Erro ao cadastrar evento!')
         console.log(error)
       }
     }
@@ -107,10 +118,12 @@ export default function EventForm({
         })
 
         if (updatedEvent) {
+          toast.success('Evento atualizado com sucesso!')
           form.reset()
           router.push(`/events/${updatedEvent._id}`)
         }
       } catch (error) {
+        toast.error('Erro ao atualizar evento!')
         console.log(error)
       }
     }

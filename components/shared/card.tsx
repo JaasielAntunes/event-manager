@@ -71,7 +71,7 @@ export default function Card({ event, hasOrderLink, hidePrice }: CardProps) {
 
           {hasOrderLink && (
             <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">
-              <p className="text-primary-500">Detalhes do Pedido</p>
+              <p className="text-primary-500">Detalhes de pedido(s)</p>
               <Image
                 src="/assets/icons/arrow.svg"
                 alt="search"

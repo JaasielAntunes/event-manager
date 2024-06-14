@@ -28,10 +28,10 @@ export default async function EventDetails({
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:max-w-7xl">
           <Image
             src={event.imageUrl}
-            alt="hero image"
-            width={1000}
-            height={1000}
-            className="h-full min-h-[300px] object-cover object-center"
+            alt={event.title}
+            width={900}
+            height={900}
+            className="h-full min-h-[300px]"
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">

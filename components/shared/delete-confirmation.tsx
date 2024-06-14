@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useTransition } from 'react'
+import { toast } from 'sonner'
 
 import {
   AlertDialog,
@@ -35,7 +36,7 @@ export default function DeleteConfirmation({ eventId }: { eventId: string }) {
       <AlertDialogContent className="bg-white">
         <AlertDialogHeader>
           <AlertDialogTitle>Tem certeza que deseja excluir?</AlertDialogTitle>
-          <AlertDialogDescription className="p-regular-16 text-grey-600">
+          <AlertDialogDescription className="p-regular-16 text-orange-600">
             Esta é uma ação irreversível.
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -46,7 +47,13 @@ export default function DeleteConfirmation({ eventId }: { eventId: string }) {
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deleteEvent({ eventId, path: pathname })
+                try {
+                  await deleteEvent({ eventId, path: pathname })
+                  toast.success('Evento excluído com sucesso!')
+                } catch (error) {
+                  toast.error('Erro ao excluir evento!')
+                  console.log(error)
+                }
               })
             }
           >
