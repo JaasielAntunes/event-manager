@@ -1,7 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import CategoryFilter from '@/components/shared/category-filter'
 import Collection from '@/components/shared/collection'
+import Search from '@/components/shared/search'
 import { Button } from '@/components/ui/button'
 import { getAllEvents } from '@/lib/actions/event.actions'
 import { SearchParamProps } from '@/types'
@@ -54,8 +56,8 @@ export default async function Home({ searchParams }: SearchParamProps) {
         </h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">
-          {/* <Search />
-        <CategoryFilter /> */}
+          <Search />
+          <CategoryFilter />
         </div>
 
         <Collection
