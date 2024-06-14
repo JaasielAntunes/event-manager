@@ -32,7 +32,7 @@ export default function CategoryFilter() {
   const onSelectCategory = (category: string) => {
     let newUrl = ''
 
-    if (category && category !== 'Tudo') {
+    if (category && category !== 'Todas') {
       newUrl = formUrlQuery({
         params: searchParams.toString(),
         key: 'category',
@@ -54,8 +54,8 @@ export default function CategoryFilter() {
         <SelectValue placeholder="Selecionar categoria" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="Tudo" className="select-item p-regular-14">
-          Tudo
+        <SelectItem value="Todas" className="select-item p-regular-14">
+          Todas
         </SelectItem>
 
         {categories.map((category) => (

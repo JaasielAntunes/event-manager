@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { startTransition, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 
@@ -21,6 +22,7 @@ import {
 } from '@/components/ui/select'
 import {
   createCategory,
+  deleteCategory,
   getAllCategories,
 } from '@/lib/actions/category.actions'
 import { ICategory } from '@/lib/database/models/category.model'
@@ -44,6 +46,18 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
     })
   }
 
+  const handleDeleteCategory = async (categoryId: string) => {
+    try {
+      await deleteCategory(categoryId)
+      setCategories((prevCategories) =>
+        prevCategories.filter((category) => category._id !== categoryId),
+      )
+      toast.success('Categoria excluída com sucesso!')
+    } catch (error) {
+      toast.error('Erro ao excluir categoria!')
+    }
+  }
+
   useEffect(() => {
     const getCategories = async () => {
       const categoryList = await getAllCategories()
@@ -62,13 +76,21 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
       <SelectContent>
         {categories.length > 0 &&
           categories.map((category) => (
-            <SelectItem
-              key={category._id}
-              value={category._id}
-              className="select-item p-regular-14"
-            >
-              {category.name}
-            </SelectItem>
+            <div key={category._id} className="relative">
+              <SelectItem
+                key={category._id}
+                value={category._id}
+                className="select-item p-regular-14"
+              >
+                {category.name}
+              </SelectItem>
+
+              <X
+                onClick={() => handleDeleteCategory(category._id)}
+                className="absolute top-1/2 -translate-y-1/2 right-1.5 
+                cursor-pointer hover:text-red-500 transition-all duration-300"
+              />
+            </div>
           ))}
 
         <AlertDialog>
@@ -77,7 +99,7 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
           </AlertDialogTrigger>
           <AlertDialogContent className="bg-white">
             <AlertDialogHeader>
-              <AlertDialogTitle>Nova Categoria</AlertDialogTitle>
+              <AlertDialogTitle>Nova Categoria *</AlertDialogTitle>
               <AlertDialogDescription>
                 <Input
                   type="text"
@@ -92,13 +114,9 @@ export default function Dropdown({ value, onChangeHandler }: DropdownProps) {
             <AlertDialogFooter>
               <AlertDialogCancel>Cancelar</AlertDialogCancel>
               <AlertDialogAction
-                onClick={() => {
-                  if (newCategory.trim()) {
-                    startTransition(handleAddCategory)
-                  } else {
-                    toast.error('O Campo nova categoria é obrigatório!')
-                  }
-                }}
+                onClick={() => startTransition(handleAddCategory)}
+                disabled={!newCategory.trim()}
+                className={!newCategory.trim() ? 'cursor-not-allowed' : ''}
               >
                 Adicionar
               </AlertDialogAction>

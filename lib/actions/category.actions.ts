@@ -32,3 +32,16 @@ export const getAllCategories = async () => {
     handleError(error);
   }
 };
+
+export const deleteCategory = async (categoryId: string) => {
+  try {
+    await connectToDB();
+
+    const deletedCategory = await Category.findByIdAndDelete(categoryId);
+    if (deletedCategory) {
+      return JSON.parse(JSON.stringify(deletedCategory));
+    }
+  } catch (error) {
+    handleError(error);
+  }
+};
