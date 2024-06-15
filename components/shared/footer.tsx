@@ -22,7 +22,11 @@ export default function Footer() {
 
         <p className="text-black text-center text-sm mx-3 my-2">
           Desenvolvido por{' '}
-          <span className="text-orange-500 font-semibold">Nexus Code</span>
+          <Link href="https://nexus-code.vercel.app" target="_blank">
+            <span className="text-orange-500 font-semibold underline">
+              Nexus Code
+            </span>
+          </Link>
         </p>
       </div>
     </footer>

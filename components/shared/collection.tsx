@@ -57,7 +57,7 @@ export default function Collection({
           <h3 className="p-bold-20 md:h5-bold text-primary-500">
             {emptyTitle}
           </h3>
-          <p className="p-regular-14">{emptyStateSubtext}</p>
+          <p className="font-semibold">{emptyStateSubtext}</p>
         </div>
       )}
     </div>

@@ -62,7 +62,7 @@ export default async function Profile({ searchParams }: SearchParamProps) {
         <Collection
           data={organizedEvents?.data}
           emptyTitle="Nenhum evento organizado ainda"
-          emptyStateSubtext="Crie algum evento agora"
+          emptyStateSubtext="Crie um evento agora"
           collectionType="Events_Organized"
           limit={3}
           page={eventsPage}

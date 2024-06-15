@@ -28,22 +28,28 @@ export default async function Orders({ searchParams }: SearchParamProps) {
             <tr className="p-medium-14 border-b text-grey-500">
               <th className="min-w-[250px] py-3 text-left">ID do pedido</th>
               <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">
-                Titulo do evento
+                Evento
               </th>
               <th className="min-w-[150px] py-3 text-left">Comprador</th>
-              <th className="min-w-[100px] py-3 text-left">Criado</th>
-              <th className="min-w-[100px] py-3 text-right">Preço</th>
+              <th className="min-w-[100px] py-3 text-left">
+                Data/hora do pedido
+              </th>
+              <th className="min-w-[100px] py-3 text-right">Valor</th>
             </tr>
           </thead>
           <tbody>
             {orders && orders.length === 0 ? (
               <tr className="border-b">
-                <td colSpan={5} className="py-4 text-center text-gray-500">
-                  Nenhum ingresso foi encontrado para este evento.
+                <td
+                  colSpan={5}
+                  className="py-4 text-center text-primary-500
+                font-semibold"
+                >
+                  Nenhum pedido encontrado.
                 </td>
               </tr>
             ) : (
-              <div>
+              <>
                 {orders &&
                   orders.map((row: IOrderItem) => (
                     <tr
@@ -61,12 +67,14 @@ export default async function Orders({ searchParams }: SearchParamProps) {
                       <td className="min-w-[100px] py-4">
                         {formatDateTime(row.createdAt).dateTime}
                       </td>
-                      <td className="min-w-[100px] py-4 text-right">
-                        {formatPrice(row.totalAmount)}
+                      <td className="min-w-[100px] py-4 text-right font-semibold text-primary-500">
+                        {row.totalAmount === '0'
+                          ? 'Gratuito'
+                          : formatPrice(row.totalAmount)}
                       </td>
                     </tr>
                   ))}
-              </div>
+              </>
             )}
           </tbody>
         </table>

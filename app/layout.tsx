@@ -12,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Gerenciador de Eventos',
+  title: 'Evently - O melhor gerenciador de eventos',
   description: 'Aplicação Full Stack para gerenciamento de eventos.',
   authors: [{ name: 'Nexus Code' }],
   icons: {

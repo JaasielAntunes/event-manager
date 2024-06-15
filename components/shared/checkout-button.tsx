@@ -23,7 +23,7 @@ export default function CheckoutButton({ event }: { event: IEvent }) {
         <>
           <SignedOut>
             <Button asChild className="button rounded-full" size="lg">
-              <Link href="/sign-in">Obter Ingressos</Link>
+              <Link href="/sign-in">Obter Ingresso</Link>
             </Button>
           </SignedOut>
 
